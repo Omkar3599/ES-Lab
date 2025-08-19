@@ -1,0 +1,137 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0X10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 480A            LDR              R0,= SRC
+   12 00000002 6801            LDR              R1,[R0]
+   13 00000004 4C0A            LDR              R4,=DSTN
+   14 00000006 F04F 0504       MOV              R5,#4
+   15 0000000A         LOOP
+   16 0000000A F001 020F       AND              R2,R1,#0XF
+   17 0000000E 2A09            CMP              R2,#9
+   18 00000010 BF8C 3237       ADDHI            R2,R2,#0X37
+   19 00000014 3230            ADDLS            R2,R2,#0X30
+   20 00000016 F804 2B01       STRB             R2,[R4],#1
+   21 0000001A EA4F 1111       LSR              R1,#4
+   22 0000001E F1A5 0501       SUB              R5,#1
+   23 00000022 D1F2            BNE              LOOP
+   24 00000024 E7FE    STOP    B                STOP
+   25 00000026 00 00 0000000A 
+                       SRC     DCD              0XA
+   26 0000002C 00000000 
+              00000000         AREA             mydata,DATA,READWRITE
+   27 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 DSTN    DCD              0,0,0,0
+   28 00000010                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\Q1.d -
+o.\Q1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=.\Q1.lst ..\Lab4\Q1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file ..\Lab4\Q1.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file ..\Lab4\Q1.s
+   Uses
+      At line 2 in file ..\Lab4\Q1.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 15 in file ..\Lab4\Q1.s
+   Uses
+      At line 23 in file ..\Lab4\Q1.s
+Comment: LOOP used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file ..\Lab4\Q1.s
+   Uses
+      At line 5 in file ..\Lab4\Q1.s
+      At line 9 in file ..\Lab4\Q1.s
+
+SRC 00000028
+
+Symbol: SRC
+   Definitions
+      At line 25 in file ..\Lab4\Q1.s
+   Uses
+      At line 11 in file ..\Lab4\Q1.s
+Comment: SRC used once
+STOP 00000024
+
+Symbol: STOP
+   Definitions
+      At line 24 in file ..\Lab4\Q1.s
+   Uses
+      At line 24 in file ..\Lab4\Q1.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file ..\Lab4\Q1.s
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DSTN 00000000
+
+Symbol: DSTN
+   Definitions
+      At line 27 in file ..\Lab4\Q1.s
+   Uses
+      At line 13 in file ..\Lab4\Q1.s
+Comment: DSTN used once
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 26 in file ..\Lab4\Q1.s
+   Uses
+      None
+Comment: mydata unused
+2 symbols
+342 symbols in table
